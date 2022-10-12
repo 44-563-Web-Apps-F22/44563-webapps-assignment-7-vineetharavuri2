@@ -38,11 +38,13 @@
     </script>
     <script>
         function startTime() {
-            for(let i = 0; i < 4; i++) {
+            // BONUS
+            let countdown = Math.floor(Math.random() * 9) + 2
+            console.log()
+            for (let i = 0; i < countdown; i++) {
                 setTimeout(() => {
                     document.getElementById("countdown").innerHTML = i
-                }, (( 3 - i) * 1000));
-            }
+                }, ((countdown - 1 - i) * 1000));
             }
             setTimeout(() => {
                 if (myTime == undefined) {
@@ -52,7 +54,7 @@
                     document.getElementById("target").innerHTML = "Time was " + (buttonTime - myTime)
                 }
             }, 3000);
-        
+        }
     </script>
 
 
