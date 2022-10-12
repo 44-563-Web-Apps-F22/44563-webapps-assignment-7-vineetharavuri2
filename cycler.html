@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html> <head> <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+
+
+
+<body>
+	<div class="container text-center">
+        <div class="container-fluid p-5 bg-warning text-black text-center">
+            <h1>Vineetha Ravuri builds a cycler</h1>
+        </div><br>
+        <div class="flex-container" id="target">
+            <div class="cycler">row item 1</div>   
+            <div class="cycler">row item 2</div>  
+            <div class="cycler">row item 3</div>  
+        </div><br>
+        <label for="inputElement">Type something: <br></label>
+        <input class="form-control" type="text" name="input" id="inputElement" value="">
+        <br>
+        <p class="message"> 
+            Press the button to create an new element of type div and then add it to the container.
+        </p>
+        <div class="container text-center">
+            <button class="btn btn-warning" type="submit" onclick="makeNewDiv()">Add Value</button>
+            <button class="btn btn-danger" type="submit" onclick="get()">Get</button>
+            <button class="btn btn-success" type="submit" onclick="spin()">Spin</button>
+            <button class="btn btn-primary" type="submit" onclick="swap()">Swap</button>
+        </div>
+    </div>	
+	<script>
+        function makeNewDiv() {
+            let element = document.createElement("div")
+            let value = document.getElementById("inputElement").value
+
+            element.innerHTML = value
+            element.className = "cycler"
+
+            let container = document.getElementById("target")
+            container.appendChild(element)
+        }
+    </script>
+    <script>
+        function get() {
+            let cyclerItems = document.getElementsByClassName("cycler")
+            if(cyclerItems.length > 0) {
+                cyclerItems[cyclerItems.length-1].remove()
+            }
+        }
+
+        function spin() {
+            let cyclerItems = document.getElementsByClassName("cycler")
+            if(cyclerItems.length > 1) {
+                removedItem = cyclerItems[cyclerItems.length-1]
+                cyclerItems[cyclerItems.length-1].remove()
+                let container = document.getElementById("target")
+                container.insertBefore(removedItem, container.firstChild)
+            }
+        }
+    </script>
+	
+</body>
+
+</html>	
