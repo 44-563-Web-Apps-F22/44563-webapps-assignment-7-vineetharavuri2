@@ -33,6 +33,9 @@
 <div id="help">
     Help report
 </div>
+<div class="container text-center">
+    <button class="btn btn-success" type="submit" onclick="resetGame()">Reset</button>
+</div>
 <br>
 <br>
 <div class="container">
@@ -130,7 +133,7 @@
         let chestCount = 0
         let score = 0
         let lastCheck = 12
-        let treasureLocation = 18
+        let treasureLocation = Math.floor(Math.random() * 24)
       
         function check(position) {
             image = document.getElementById(ids[position])
@@ -173,7 +176,24 @@
                 document.getElementById("help").innerHTML = "Sorry, no help available"
             }
         }
+        // BONUS
+      function resetGame() {
+      treasureLocation = Math.floor(Math.random() * 24)
+      while(treasureLocation == 12) {
+          treasureLocation = Math.floor(Math.random() * 24)
+      }
+      chestCount = 0
+      score = 0
+      document.getElementById("chests").innerHTML = "Number of chests checked is zero"
+      document.getElementById("score").innerHTML = "Score is unknown"
+      document.getElementById("help").innerHTML = "Help report"
+      for(let i = 0; i < 24; i++) {
+          if(i != 12) {
+              document.getElementById(ids[i]).src = "Treasure Chest.jpg"
+          }
+      }
+  }
         
-       </script>   
+</script>   
 </body>
 </html>
