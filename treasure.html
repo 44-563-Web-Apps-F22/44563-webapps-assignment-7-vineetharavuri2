@@ -22,15 +22,15 @@
 <h1>Tresasure hunt by Vineetha Ravuri</h1>
 <div style="color:maroon" >Click on the chests to search for 
     treasure </div>
-<div class="chests">
+<div id="chests">
      Number of chests checked is zero
 </div>
 
-<div class="score">
+<div id="score">
     Score is unknown
 </div>
 
-<div class="help">
+<div id="help">
     Help report
 </div>
 <br>
@@ -142,7 +142,7 @@
             chestCount += 1
             score += 1 
             document.getElementById("chests").innerHTML = "Number of chests checked is " +chestCount;
-            document.getElementById("score").innerHTML = "Score is " + score
+            document.getElementById("score").innerHTML = "Score is " + score;
             lastCheck = position;
         }
       
@@ -173,23 +173,7 @@
                 document.getElementById("help").innerHTML = "Sorry, no help available"
             }
         }
-        //Bonus
-        function resetGame() {
-      treasureLocation = Math.floor(Math.random() * 24)
-      while(treasureLocation == 12) {
-          treasureLocation = Math.floor(Math.random() * 24)
-      }
-      chestCount = 0
-      score = 0
-      document.getElementById("chests").innerHTML = "Number of chests checked is zero"
-      document.getElementById("score").innerHTML = "Score is unknown"
-      document.getElementById("help").innerHTML = "Help report"
-      for(let i = 0; i < 24; i++) {
-          if(i != 12) {
-              document.getElementById(ids[i]).src = "Treasure Chest.jpg"
-          }
-      }
-  }
+        
        </script>   
 </body>
 </html>
